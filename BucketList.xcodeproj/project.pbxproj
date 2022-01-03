@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B57640092782904600B3B2AF /* NewItemViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57640082782904600B3B2AF /* NewItemViewControllerDelegate.swift */; };
 		B5AFC6CC277A266600BE1015 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFC6CB277A266600BE1015 /* AppDelegate.swift */; };
 		B5AFC6CE277A266600BE1015 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFC6CD277A266600BE1015 /* SceneDelegate.swift */; };
 		B5AFC6D0277A266600BE1015 /* BucketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFC6CF277A266600BE1015 /* BucketListViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B57640082782904600B3B2AF /* NewItemViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewControllerDelegate.swift; sourceTree = "<group>"; };
 		B5AFC6C8277A266600BE1015 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AFC6CB277A266600BE1015 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5AFC6CD277A266600BE1015 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				B5AFC6D6277A266800BE1015 /* LaunchScreen.storyboard */,
 				B5AFC6D9277A266800BE1015 /* Info.plist */,
 				B5AFC6FB277A2A5900BE1015 /* NewItemViewController.swift */,
+				B57640082782904600B3B2AF /* NewItemViewControllerDelegate.swift */,
 			);
 			path = BucketList;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				B5AFC6D0277A266600BE1015 /* BucketListViewController.swift in Sources */,
 				B5AFC6CC277A266600BE1015 /* AppDelegate.swift in Sources */,
 				B5AFC6FC277A2A5900BE1015 /* NewItemViewController.swift in Sources */,
+				B57640092782904600B3B2AF /* NewItemViewControllerDelegate.swift in Sources */,
 				B5AFC6CE277A266600BE1015 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

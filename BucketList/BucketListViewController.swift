@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BucketListViewController: UITableViewController {
+class BucketListViewController: UITableViewController, NewItemViewDelegate {
+    
 
     var items = ["Hi", "How", "Are", "You?"]
     
@@ -15,7 +16,6 @@ class BucketListViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         items.count
@@ -27,8 +27,20 @@ class BucketListViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func unwind(_ segue: UIStoryboardSegue) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let newItemViewController = navigationController.topViewController as! NewItemViewController
+        newItemViewController.delegate = self
+    }
+    
+    func itemSaved(by controller: NewItemViewController, with text: String) {
+        items.append(text)
+        tableView.reloadData()
+        dismiss(animated: true)
+    }
+    
+    func cancelButtonPressed(by controller: NewItemViewController) {
+        dismiss(animated: true)
     }
 }
 

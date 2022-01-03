@@ -89,13 +89,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Zad-dL-fpW">
                             <connections>
-                                <segue destination="6De-c5-m34" kind="unwind" unwindAction="unwind:" id="ke1-SS-g23"/>
+                                <action selector="saveButtonPressed2:" destination="Wgh-bj-LMd" id="kzm-83-fnO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itemTF" destination="Ije-rA-RFj" id="JbG-I3-ovD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DnC-hq-TAs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="6De-c5-m34" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3018.840579710145" y="71.651785714285708"/>
         </scene>
