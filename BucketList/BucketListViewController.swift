@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class BucketListViewController: UITableViewController, NewItemViewDelegate {
     
-    var items = [String]()
+    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let saveContext = (UIApplication.shared.delegate as! AppDelegate).saveContext
+    var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchAllItems()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -21,7 +25,7 @@ class BucketListViewController: UITableViewController, NewItemViewDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = items[indexPath.row].title!
         return cell
     }
     
@@ -30,6 +34,9 @@ class BucketListViewController: UITableViewController, NewItemViewDelegate {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        managedObjectContext.delete(item)
+        saveContext()
         items.remove(at: indexPath.row)
         tableView.reloadData()
     }
@@ -41,18 +48,30 @@ class BucketListViewController: UITableViewController, NewItemViewDelegate {
         
         if sender is NSIndexPath {
             let indexPath = sender as! NSIndexPath
-            newItemViewController.item = items[indexPath.row]
+            newItemViewController.item = items[indexPath.row].title!
             newItemViewController.indexPath = indexPath
+        }
+    }
+    
+    func fetchAllItems() {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            items = try managedObjectContext.fetch(request)
+        } catch {
+            print(error)
         }
     }
     
     func itemSaved(by controller: NewItemViewController, with text: String, at indexPath: NSIndexPath?) {
         if let indexPath = indexPath {
-            items[indexPath.row] = text
+            items[indexPath.row].title = text
         }
         else {
-            items.append(text)
+            let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: managedObjectContext) as! Item
+            item.title = text
+            items.append(item)
         }
+        saveContext()
         tableView.reloadData()
         dismiss(animated: true)
     }
