@@ -9,7 +9,7 @@ import UIKit
 
 class BucketListViewController: UITableViewController, NewItemViewDelegate {
     
-    var items = ["Hi", "How", "Are", "You?"]
+    var items = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,13 @@ class BucketListViewController: UITableViewController, NewItemViewDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "editItemSegue", sender: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        items.remove(at: indexPath.row)
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
