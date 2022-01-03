@@ -38,7 +38,8 @@ class BucketListViewController: UITableViewController, NewItemViewDelegate {
         let navigationController = segue.destination as! UINavigationController
         let newItemViewController = navigationController.topViewController as! NewItemViewController
         newItemViewController.delegate = self
-        if segue.identifier == "editItemSegue" {
+        
+        if sender is NSIndexPath {
             let indexPath = sender as! NSIndexPath
             newItemViewController.item = items[indexPath.row]
             newItemViewController.indexPath = indexPath
