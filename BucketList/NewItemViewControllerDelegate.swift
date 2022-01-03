@@ -7,6 +7,6 @@
 
 import UIKit
 protocol NewItemViewDelegate: AnyObject {
-    func itemSaved(by controller: NewItemViewController, with text: String)
-    func cancelButtonPressed(by controller: NewItemViewController)
+    func itemSaved(by controller: NewItemViewController, with text: String, at indexPath: NSIndexPath?)
+    func itemCanceled(by controller: NewItemViewController)
 }

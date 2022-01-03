@@ -9,12 +9,10 @@ import UIKit
 
 class BucketListViewController: UITableViewController, NewItemViewDelegate {
     
-
     var items = ["Hi", "How", "Are", "You?"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,19 +25,33 @@ class BucketListViewController: UITableViewController, NewItemViewDelegate {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "editItemSegue", sender: indexPath)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as! UINavigationController
         let newItemViewController = navigationController.topViewController as! NewItemViewController
         newItemViewController.delegate = self
+        if segue.identifier == "editItemSegue" {
+            let indexPath = sender as! NSIndexPath
+            newItemViewController.item = items[indexPath.row]
+            newItemViewController.indexPath = indexPath
+        }
     }
     
-    func itemSaved(by controller: NewItemViewController, with text: String) {
-        items.append(text)
+    func itemSaved(by controller: NewItemViewController, with text: String, at indexPath: NSIndexPath?) {
+        if let indexPath = indexPath {
+            items[indexPath.row] = text
+        }
+        else {
+            items.append(text)
+        }
         tableView.reloadData()
         dismiss(animated: true)
     }
     
-    func cancelButtonPressed(by controller: NewItemViewController) {
+    func itemCanceled(by controller: NewItemViewController) {
         dismiss(animated: true)
     }
 }

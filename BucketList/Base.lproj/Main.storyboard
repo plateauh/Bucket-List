@@ -33,10 +33,13 @@
                     <navigationItem key="navigationItem" title="Bucket List" id="dLS-Zt-y2n">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Q3-Ym-vAT">
                             <connections>
-                                <segue destination="23l-4F-TiB" kind="presentation" id="xTv-yN-JTS"/>
+                                <segue destination="23l-4F-TiB" kind="presentation" identifier="newItemSegue" id="xTv-yN-JTS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="23l-4F-TiB" kind="presentation" identifier="editItemSegue" id="zuL-IE-deG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWh-xa-5Mw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -138,6 +141,9 @@
             <point key="canvasLocation" x="2108.695652173913" y="71.651785714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="zuL-IE-deG"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -11,14 +11,17 @@ class NewItemViewController: UITableViewController {
 
     @IBOutlet weak var itemTF: UITextField!
     weak var delegate: NewItemViewDelegate?
+    var item: String?
+    var indexPath: NSIndexPath?
     
     @IBAction func saveButtonPressed2(_ sender: UIBarButtonItem) {
-        delegate?.itemSaved(by: self, with: itemTF.text!)
+        delegate?.itemSaved(by: self, with: itemTF.text!, at: indexPath)
     }
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        delegate?.cancelButtonPressed(by: self)
+        delegate?.itemCanceled(by: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        itemTF.text = item
     }
 }
